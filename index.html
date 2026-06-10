@@ -4,37 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Collin Pham & Gabriela Pastor · August 1</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --sage:       #7a9b87;
-  --sage-light: #a8c4ad;
-  --sage-dark:  #4f7060;
-  --pink:       #c49fa0;
-  --pink-light: #dbbfb5;
-  --pink-pale:  #f0e0d8;
-  --teal:       #6b9fa0;
-  --teal-light: #9dc4c5;
-  --teal-pale:  #d4e8e9;
-  --gold:       #b8914a;
+  --sage: #7a9b87;
+  --sage-dark: #4f7060;
+  --gold: #b8914a;
   --gold-light: #d4b06a;
-  --gold-pale:  #f2e0ba;
-  --cream:      #f5ede0;
-  --cream-dark: #e8d5bb;
-  --ivory:      #faf5ec;
-  --lead:       #2c2a1e;
-  --lead-mid:   #4a4535;
+  --gold-pale: #f2e0ba;
+  --cream: #f5ede0;
+  --ivory: #faf5ec;
+  --lead: #2c2a1e;
+  --lead-mid: #4a4535;
   --lead-light: #7a7260;
-  --amber:      #d4903a;
-  --amber-glow: rgba(212,144,58,0.35);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--cream);
@@ -43,43 +34,44 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── CANVAS / PARTICLE LAYER ─── */
 #particle-canvas {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 1;
 }
 
-/* ─── GLOBAL LEAD DIVIDER ─── */
-.lead-divider {
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--gold) 20%,
-    var(--gold-light) 50%,
-    var(--gold) 80%,
-    transparent 100%
-  );
-  position: relative;
-  margin: 0;
-}
-.lead-divider::before {
-  content: '✦';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  color: var(--gold);
-  font-size: 1rem;
-  background: var(--cream);
-  padding: 0 0.75rem;
-  line-height: 1;
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  background: linear-gradient(180deg, rgba(250,245,236,0.92), transparent);
+  backdrop-filter: blur(6px);
 }
 
-/* ─── HERO ─── */
+nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lead);
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+nav a:hover {
+  color: var(--gold);
+  opacity: 1;
+}
+
 #hero {
   position: relative;
   min-height: 100vh;
@@ -87,21 +79,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   background: var(--ivory);
+  overflow: hidden;
   z-index: 2;
 }
 
-/* Stained glass background panels */
 #hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 70% at 50% 20%, rgba(180,210,185,0.25) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 15% 60%, rgba(107,159,160,0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 85% 60%, rgba(196,159,160,0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 90%, rgba(184,145,74,0.15) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 70% at 50% 20%, rgba(180,210,185,0.18), transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 60%, rgba(107,159,160,0.14), transparent 60%),
+    radial-gradient(ellipse 40% 50% at 85% 60%, rgba(196,159,160,0.14), transparent 60%);
   z-index: 0;
 }
 
@@ -113,28 +103,28 @@ body {
   align-items: center;
   width: 100%;
   max-width: 860px;
-  padding: 2rem 1rem 3rem;
+  padding: 8rem 1rem 10rem;
 }
 
-/* ── Arch SVG wrapper ── */
 .arch-wrapper {
   position: relative;
   width: 100%;
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
-.arch-svg {
+.arch-png {
   width: 100%;
-  height: auto;
+  max-height: 900px;
+  object-fit: contain;
   display: block;
-  filter: drop-shadow(0 8px 32px rgba(184,145,74,0.25));
+  filter: drop-shadow(0 8px 32px rgba(44,42,30,0.35));
 }
 
-/* Text inside the arch */
 .arch-text-overlay {
   position: absolute;
-  top: 50%;
+  z-index: 10;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -144,7 +134,6 @@ body {
 }
 
 .arch-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
   font-size: clamp(0.7rem, 1.5vw, 0.95rem);
@@ -164,7 +153,6 @@ body {
 }
 
 .arch-ampersand {
-  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.2rem, 2.8vw, 2rem);
@@ -182,21 +170,18 @@ body {
   text-transform: uppercase;
 }
 
-/* Sub-copy below arch */
 .hero-sub {
   margin-top: 1.5rem;
   text-align: center;
 }
 
 .hero-sub p {
-  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1rem, 2vw, 1.3rem);
   color: var(--lead-mid);
   letter-spacing: 0.05em;
   line-height: 1.7;
-  margin-bottom: 0.4rem;
 }
 
 .hero-details {
@@ -222,14 +207,12 @@ body {
 }
 
 .hero-detail-value {
-  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(0.85rem, 1.8vw, 1.05rem);
   color: var(--lead);
   font-style: italic;
   letter-spacing: 0.06em;
 }
 
-/* Scroll indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -240,23 +223,40 @@ body {
   align-items: center;
   gap: 0.4rem;
   opacity: 0.5;
-  animation: breathe 2.5s ease-in-out infinite;
   z-index: 3;
 }
+
 .scroll-indicator span {
   font-family: 'Cinzel', serif;
   font-size: 0.55rem;
   letter-spacing: 0.25em;
   color: var(--gold);
 }
-.scroll-indicator svg { color: var(--gold); }
 
-@keyframes breathe {
-  0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-  50%       { opacity: 0.7; transform: translateX(-50%) translateY(4px); }
+.lead-divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  position: relative;
 }
 
-/* ─── SECTION COMMONS ─── */
+.lead-divider::before {
+  content: '✦';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: var(--gold);
+  font-size: 1rem;
+  background: var(--cream);
+  padding: 0 0.75rem;
+}
+
+.shimmer-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,145,74,0.45), transparent);
+}
+
 section {
   position: relative;
   z-index: 2;
@@ -277,7 +277,6 @@ section {
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1rem;
-  opacity: 0.85;
 }
 
 .section-title {
@@ -290,7 +289,6 @@ section {
 }
 
 .section-body {
-  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
   line-height: 1.9;
@@ -299,40 +297,6 @@ section {
   margin: 0 auto;
 }
 
-/* Fade-in reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── GLASS ORNAMENT PANELS (flanking sections) ─── */
-.glass-panel-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.glass-panel-bg::before,
-.glass-panel-bg::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 100px;
-  background: linear-gradient(180deg,
-    rgba(107,159,160,0.07) 0%,
-    rgba(196,159,160,0.09) 50%,
-    rgba(184,145,74,0.06) 100%
-  );
-}
-.glass-panel-bg::before { left: 0; }
-.glass-panel-bg::after  { right: 0; }
-
-/* ─── ART NOUVEAU LINEWORK ORNAMENT ─── */
 .nouveau-ornament {
   display: flex;
   align-items: center;
@@ -340,6 +304,7 @@ section {
   gap: 1rem;
   margin: 1.5rem auto;
 }
+
 .nouveau-ornament::before,
 .nouveau-ornament::after {
   content: '';
@@ -348,17 +313,16 @@ section {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
 }
+
 .nouveau-diamond {
   width: 8px;
   height: 8px;
   background: var(--gold);
   transform: rotate(45deg);
-  flex-shrink: 0;
 }
 
-/* ─── DRESS CODE ─── */
 #dress-code {
-  background: linear-gradient(180deg, var(--ivory) 0%, #f0e6d4 100%);
+  background: linear-gradient(180deg, var(--ivory), #f0e6d4);
 }
 
 .dress-code-badge {
@@ -370,68 +334,40 @@ section {
   letter-spacing: 0.2em;
   color: var(--lead);
   margin: 1.5rem auto;
-  position: relative;
 }
-.dress-code-badge::before,
-.dress-code-badge::after {
-  content: '◆';
-  position: absolute;
-  top: 50%; transform: translateY(-50%);
-  font-size: 0.5rem;
-  color: var(--gold);
-}
-.dress-code-badge::before { left: 0.6rem; }
-.dress-code-badge::after  { right: 0.6rem; }
 
-.inspo-link {
-  display: inline-block;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--teal);
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  border-bottom: 1px solid rgba(107,159,160,0.4);
-  padding-bottom: 2px;
-  transition: color 0.3s, border-color 0.3s;
-}
-.inspo-link:hover { color: var(--gold); border-color: var(--gold); }
-
-/* ─── REGISTRY ─── */
+.inspo-link,
 .registry-link {
   display: inline-block;
+  color: var(--lead);
+  text-decoration: none;
+}
+
+.inspo-link {
+  font-style: italic;
+  font-size: 1rem;
+  color: #6b9fa0;
+  border-bottom: 1px solid rgba(107,159,160,0.4);
+  padding-bottom: 2px;
+}
+
+.registry-link {
   margin-top: 1.5rem;
   font-family: 'Cinzel', serif;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--lead);
-  text-decoration: none;
   border: 1px solid var(--gold);
   padding: 0.7em 2em;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s;
 }
-.registry-link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gold);
-  transform: translateX(-101%);
-  transition: transform 0.4s ease;
-  z-index: -1;
-}
-.registry-link:hover { color: var(--ivory); }
-.registry-link:hover::before { transform: translateX(0); }
 
-/* ─── GALLERY ─── */
-#gallery { background: var(--cream); }
+#gallery {
+  background: var(--cream);
+}
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
   gap: 10px;
   margin-top: 2.5rem;
 }
@@ -439,69 +375,19 @@ section {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3 / 4;
 }
+
 .gallery-item:first-child {
   grid-row: span 2;
   aspect-ratio: unset;
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: sepia(0.12) contrast(0.95) brightness(1.02);
-  transition: transform 0.7s ease, filter 0.5s ease;
-}
-.gallery-item:hover img {
-  transform: scale(1.04);
-  filter: sepia(0.05) contrast(1) brightness(1.04);
-}
-
-/* Glass frame on gallery items */
-.gallery-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid rgba(184,145,74,0.3);
-  pointer-events: none;
-  transition: border-color 0.3s;
-}
-.gallery-item:hover::after { border-color: rgba(184,145,74,0.6); }
-
-/* Lead-line overlay texture on gallery */
-.gallery-item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 79px,
-    rgba(44,42,30,0.06) 79px,
-    rgba(44,42,30,0.06) 80px
-  ),
-  repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 79px,
-    rgba(44,42,30,0.06) 79px,
-    rgba(44,42,30,0.06) 80px
-  );
-  z-index: 1;
-  pointer-events: none;
 }
 
 .gallery-placeholder {
   width: 100%;
   height: 100%;
   min-height: 220px;
-  background: linear-gradient(135deg,
-    rgba(168,196,173,0.4) 0%,
-    rgba(157,196,197,0.3) 40%,
-    rgba(219,191,181,0.4) 70%,
-    rgba(242,224,186,0.3) 100%
-  );
+  background: linear-gradient(135deg, rgba(168,196,173,0.4), rgba(219,191,181,0.4), rgba(242,224,186,0.3));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -509,16 +395,15 @@ section {
   color: var(--lead-light);
   gap: 0.5rem;
 }
+
 .gallery-placeholder span {
-  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
 }
 
-/* ─── RSVP ─── */
 #rsvp {
-  background: linear-gradient(180deg, var(--cream) 0%, var(--ivory) 100%);
+  background: linear-gradient(180deg, var(--cream), var(--ivory));
 }
 
 .rsvp-frame {
@@ -528,45 +413,12 @@ section {
   max-width: 540px;
   margin: 2rem auto 0;
   background: rgba(255,250,244,0.85);
-  backdrop-filter: blur(4px);
-}
-
-/* Corner ornaments */
-.rsvp-frame::before,
-.rsvp-frame::after,
-.rsvp-frame .corner-tl,
-.rsvp-frame .corner-tr,
-.rsvp-frame .corner-bl,
-.rsvp-frame .corner-br {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: var(--gold);
-  border-style: solid;
-}
-.rsvp-frame::before {
-  top: -1px; left: -1px;
-  border-width: 2px 0 0 2px;
-}
-.rsvp-frame::after {
-  top: -1px; right: -1px;
-  border-width: 2px 2px 0 0;
-}
-.corner-bl {
-  bottom: -1px; left: -1px;
-  border-width: 0 0 2px 2px;
-}
-.corner-br {
-  bottom: -1px; right: -1px;
-  border-width: 0 2px 2px 0;
 }
 
 .rsvp-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin-top: 0.5rem;
 }
 
 .form-group {
@@ -595,31 +447,13 @@ section {
   font-size: 1rem;
   color: var(--lead);
   outline: none;
-  transition: border-color 0.3s;
   width: 100%;
-  appearance: none;
-  -webkit-appearance: none;
 }
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--lead-light);
-  font-style: italic;
-  opacity: 0.6;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-bottom-color: var(--gold);
-}
+
 .form-group textarea {
   resize: vertical;
   min-height: 80px;
 }
-.form-group select {
-  cursor: pointer;
-  background: var(--ivory) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23b8914a'/%3E%3C/svg%3E") right 0.2rem center / 10px no-repeat;
-}
-.form-group select option { background: var(--ivory); color: var(--lead); }
 
 .rsvp-submit {
   font-family: 'Cinzel', serif;
@@ -633,36 +467,21 @@ section {
   cursor: pointer;
   margin-top: 0.8rem;
   align-self: center;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s;
 }
-.rsvp-submit::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-.rsvp-submit:hover { color: var(--ivory); }
-.rsvp-submit:hover::before { transform: scaleX(1); }
-.rsvp-submit span { position: relative; z-index: 1; }
 
 .form-status {
   text-align: center;
-  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 1rem;
   color: var(--sage-dark);
   margin-top: 0.5rem;
-  min-height: 1.5em;
   display: none;
 }
-.form-status.visible { display: block; }
 
-/* ─── FOOTER ─── */
+.form-status.visible {
+  display: block;
+}
+
 footer {
   background: var(--lead);
   text-align: center;
@@ -670,6 +489,7 @@ footer {
   position: relative;
   z-index: 2;
 }
+
 footer .footer-names {
   font-family: 'Cinzel', serif;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -677,73 +497,62 @@ footer .footer-names {
   color: var(--gold-pale);
   margin-bottom: 0.8rem;
 }
+
 footer .footer-date {
-  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.9rem;
   color: rgba(242,224,186,0.5);
   letter-spacing: 0.1em;
 }
 
-/* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 1.2rem 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  background: linear-gradient(180deg, rgba(250,245,236,0.92) 0%, transparent 100%);
-  backdrop-filter: blur(6px);
-  transition: background 0.4s;
-}
-nav a {
-  font-family: 'Cinzel', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--lead);
-  text-decoration: none;
-  transition: color 0.3s;
-  opacity: 0.75;
-}
-nav a:hover { color: var(--gold); opacity: 1; }
-
-/* ─── GLASS SHIMMER ON SECTIONS ─── */
-.shimmer-line {
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(184,145,74,0.12) 20%,
-    rgba(184,145,74,0.45) 50%,
-    rgba(184,145,74,0.12) 80%,
-    transparent
-  );
-  animation: shimmer 4s ease infinite;
-}
-@keyframes shimmer {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 1; }
+.reveal {
+  opacity: 1;
+  transform: none;
 }
 
-/* ─── RESPONSIVE ─── */
 @media (max-width: 600px) {
-  nav { gap: 1.2rem; padding: 1rem 1rem; flex-wrap: wrap; }
-  nav a { font-size: 0.52rem; }
-  .arch-text-overlay { width: 72%; padding-top: 5%; }
-  .hero-details { gap: 1.5rem; }
-  .rsvp-frame { padding: 2rem 1.2rem; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-item:first-child { grid-row: span 1; aspect-ratio: 3/4; }
-  .section-inner { padding: 3.5rem 1.2rem; }
-}
+  nav {
+    gap: 1.2rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  nav a {
+    font-size: 0.52rem;
+  }
+
+  .arch-wrapper {
+    max-width: 92vw;
+  }
+
+  .arch-png {
+    max-height: 880px;
+  }
+
+  .arch-text-overlay {
+    width: 72%;
+  }
+
+  .hero-details {
+    gap: 1.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-item:first-child {
+    grid-row: span 1;
+    aspect-ratio: 3 / 4;
+  }
+
+  .section-inner {
+    padding: 3.5rem 1.2rem;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <canvas id="particle-canvas"></canvas>
@@ -756,250 +565,17 @@ nav a:hover { color: var(--gold); opacity: 1; }
   <a href="#rsvp">RSVP</a>
 </nav>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section id="hero">
   <div class="hero-inner">
+
     <div class="arch-wrapper">
-      <!-- Large cathedral stained-glass arch SVG -->
-      <svg class="arch-svg" viewBox="0 0 640 820" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <!-- Main arch clipping path -->
-          <clipPath id="archClip">
-            <path d="M 60 820 L 60 320 Q 60 40 320 40 Q 580 40 580 320 L 580 820 Z"/>
-          </clipPath>
+      <img class="arch-png" src="glassog.png" alt="Stained glass border">
 
-          <!-- Glass panel gradients -->
-          <radialGradient id="glowCenter" cx="50%" cy="35%" r="55%">
-            <stop offset="0%"   stop-color="#f5f0e0" stop-opacity="0.95"/>
-            <stop offset="40%"  stop-color="#f0e8d4" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#e8d5bb" stop-opacity="0.1"/>
-          </radialGradient>
-
-          <linearGradient id="sagePanel" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"  stop-color="#a8c4ad" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#7a9b87" stop-opacity="0.35"/>
-          </linearGradient>
-
-          <linearGradient id="pinkPanel" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0%"  stop-color="#dbbfb5" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#c49fa0" stop-opacity="0.3"/>
-          </linearGradient>
-
-          <linearGradient id="tealPanel" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0%"  stop-color="#9dc4c5" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#6b9fa0" stop-opacity="0.3"/>
-          </linearGradient>
-
-          <linearGradient id="goldPanel" x1="0.5" y1="0" x2="0.5" y2="1">
-            <stop offset="0%"  stop-color="#f2e0ba" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#d4b06a" stop-opacity="0.4"/>
-          </linearGradient>
-
-          <linearGradient id="amberPanel" x1="0.5" y1="0" x2="0.5" y2="1">
-            <stop offset="0%"  stop-color="#d4903a" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#b8914a" stop-opacity="0.25"/>
-          </linearGradient>
-
-          <linearGradient id="rosePanel" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"  stop-color="#f0e0d8" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#c49fa0" stop-opacity="0.35"/>
-          </linearGradient>
-
-          <filter id="glassBlur">
-            <feGaussianBlur stdDeviation="0.8" result="blur"/>
-            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-          </filter>
-
-          <filter id="softGlow">
-            <feGaussianBlur stdDeviation="3" result="glow"/>
-            <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-
-          <linearGradient id="leadLineGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%"   stop-color="#2c2a1e" stop-opacity="0.7"/>
-            <stop offset="50%"  stop-color="#4a4535" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#2c2a1e" stop-opacity="0.7"/>
-          </linearGradient>
-        </defs>
-
-        <!-- ── Arch background fill ── -->
-        <path d="M 60 820 L 60 320 Q 60 40 320 40 Q 580 40 580 320 L 580 820 Z"
-              fill="#f5ede0" opacity="0.92"/>
-
-        <!-- ── Stained glass panels (clipped to arch) ── -->
-        <g clip-path="url(#archClip)">
-
-          <!-- Keystone apex panel – amber -->
-          <path d="M 260 42 Q 320 32 380 42 L 370 110 Q 320 95 270 110 Z"
-                fill="url(#amberPanel)" filter="url(#softGlow)"/>
-
-          <!-- Upper arch semicircle – sage glow -->
-          <path d="M 130 240 Q 140 100 320 65 Q 500 100 510 240
-                   Q 490 200 460 190 Q 430 180 400 200
-                   Q 370 220 360 250 Q 340 265 320 260
-                   Q 300 265 280 250 Q 270 220 240 200
-                   Q 210 180 180 190 Q 150 200 130 240 Z"
-                fill="url(#sagePanel)"/>
-
-          <!-- Left large botanical panel -->
-          <path d="M 60 320 Q 60 200 130 130 L 200 180 L 220 380 L 60 400 Z"
-                fill="url(#tealPanel)"/>
-
-          <!-- Right large botanical panel -->
-          <path d="M 580 320 Q 580 200 510 130 L 440 180 L 420 380 L 580 400 Z"
-                fill="url(#pinkPanel)"/>
-
-          <!-- Center tall panel – cream/ivory glow -->
-          <rect x="245" y="180" width="150" height="300" rx="4"
-                fill="url(#glowCenter)"/>
-
-          <!-- Lower left panel – rose -->
-          <path d="M 60 400 L 220 380 L 215 560 L 60 560 Z"
-                fill="url(#rosePanel)"/>
-
-          <!-- Lower right panel – gold -->
-          <path d="M 580 400 L 420 380 L 425 560 L 580 560 Z"
-                fill="url(#goldPanel)"/>
-
-          <!-- Bottom left panels -->
-          <rect x="60"  y="560" width="80"  height="260" fill="url(#sagePanel)"/>
-          <rect x="140" y="560" width="80"  height="260" fill="url(#tealPanel)" opacity="0.7"/>
-          <rect x="220" y="560" width="95"  height="260" fill="url(#goldPanel)" opacity="0.65"/>
-
-          <!-- Bottom right panels -->
-          <rect x="500" y="560" width="80"  height="260" fill="url(#pinkPanel)"/>
-          <rect x="420" y="560" width="80"  height="260" fill="url(#rosePanel)" opacity="0.7"/>
-          <rect x="325" y="560" width="95"  height="260" fill="url(#amberPanel)" opacity="0.55"/>
-
-          <!-- Botanical motif – lily silhouettes LEFT -->
-          <!-- Stem -->
-          <path d="M 150 600 Q 145 500 155 380 Q 160 310 170 260 Q 175 230 185 200"
-                stroke="#4f7060" stroke-width="2.5" fill="none" opacity="0.5"/>
-          <!-- Leaves -->
-          <path d="M 155 420 Q 100 390 90 340 Q 130 360 155 400 Z"
-                fill="#7a9b87" opacity="0.35"/>
-          <path d="M 160 370 Q 120 330 115 280 Q 150 310 163 360 Z"
-                fill="#a8c4ad" opacity="0.3"/>
-          <!-- Flower 1 -->
-          <ellipse cx="178" cy="195" rx="18" ry="28" transform="rotate(-20,178,195)"
-                   fill="#dbbfb5" opacity="0.5"/>
-          <ellipse cx="192" cy="190" rx="15" ry="25" transform="rotate(15,192,190)"
-                   fill="#c49fa0" opacity="0.45"/>
-          <ellipse cx="170" cy="185" rx="12" ry="22" transform="rotate(-40,170,185)"
-                   fill="#f0e0d8" opacity="0.5"/>
-          <!-- Flower center -->
-          <circle cx="182" cy="192" r="7" fill="#d4b06a" opacity="0.55"/>
-
-          <!-- Botanical motif – lily silhouettes RIGHT -->
-          <path d="M 490 600 Q 495 500 485 380 Q 480 310 470 260 Q 465 230 455 200"
-                stroke="#4f7060" stroke-width="2.5" fill="none" opacity="0.5"/>
-          <path d="M 485 420 Q 540 390 550 340 Q 510 360 485 400 Z"
-                fill="#7a9b87" opacity="0.35"/>
-          <path d="M 480 370 Q 520 330 525 280 Q 490 310 477 360 Z"
-                fill="#a8c4ad" opacity="0.3"/>
-          <ellipse cx="462" cy="195" rx="18" ry="28" transform="rotate(20,462,195)"
-                   fill="#dbbfb5" opacity="0.5"/>
-          <ellipse cx="448" cy="190" rx="15" ry="25" transform="rotate(-15,448,190)"
-                   fill="#c49fa0" opacity="0.45"/>
-          <ellipse cx="470" cy="185" rx="12" ry="22" transform="rotate(40,470,185)"
-                   fill="#f0e0d8" opacity="0.5"/>
-          <circle cx="458" cy="192" r="7" fill="#d4b06a" opacity="0.55"/>
-
-          <!-- Small top botanical center motif -->
-          <!-- Leaves fanning from apex -->
-          <path d="M 320 75 Q 290 95 275 125 Q 295 108 320 100 Q 345 108 365 125 Q 350 95 320 75 Z"
-                fill="#a8c4ad" opacity="0.4"/>
-          <path d="M 320 80 Q 305 115 310 140 Q 318 120 320 90 Q 322 120 330 140 Q 335 115 320 80 Z"
-                fill="#7a9b87" opacity="0.35"/>
-
-        </g><!-- end clip -->
-
-        <!-- ════════════════════════════════
-             LEAD CAME LINES — the defining feature of Tiffany glass
-             ════════════════════════════════ -->
-
-        <!-- Outer arch lead line -->
-        <path d="M 60 820 L 60 320 Q 60 40 320 40 Q 580 40 580 320 L 580 820"
-              stroke="#2c2a1e" stroke-width="5" fill="none" stroke-linejoin="round"/>
-        <!-- Inner arch offset -->
-        <path d="M 80 820 L 80 322 Q 82 62 320 62 Q 558 62 560 322 L 560 820"
-              stroke="#4a4535" stroke-width="2.5" fill="none" opacity="0.6"/>
-
-        <!-- Horizontal lead lines -->
-        <line x1="60"  y1="400" x2="580" y2="400" stroke="#2c2a1e" stroke-width="3" opacity="0.6"/>
-        <line x1="60"  y1="560" x2="580" y2="560" stroke="#2c2a1e" stroke-width="3" opacity="0.6"/>
-        <line x1="82"  y1="260" x2="558" y2="260" stroke="#2c2a1e" stroke-width="2.5" opacity="0.5"/>
-
-        <!-- Vertical lead lines -->
-        <line x1="220" y1="560" x2="220" y2="820" stroke="#2c2a1e" stroke-width="2.5" opacity="0.55"/>
-        <line x1="140" y1="560" x2="140" y2="820" stroke="#2c2a1e" stroke-width="2"   opacity="0.45"/>
-        <line x1="420" y1="560" x2="420" y2="820" stroke="#2c2a1e" stroke-width="2.5" opacity="0.55"/>
-        <line x1="500" y1="560" x2="500" y2="820" stroke="#2c2a1e" stroke-width="2"   opacity="0.45"/>
-        <line x1="320" y1="560" x2="320" y2="820" stroke="#2c2a1e" stroke-width="2.5" opacity="0.4"/>
-
-        <!-- Diagonal lead lines upper arch sections -->
-        <line x1="130" y1="240" x2="220" y2="380" stroke="#2c2a1e" stroke-width="2" opacity="0.45"/>
-        <line x1="510" y1="240" x2="420" y2="380" stroke="#2c2a1e" stroke-width="2" opacity="0.45"/>
-
-        <!-- Radiating spoke lines from crown -->
-        <line x1="320" y1="62"  x2="220" y2="180" stroke="#2c2a1e" stroke-width="1.8" opacity="0.4"/>
-        <line x1="320" y1="62"  x2="420" y2="180" stroke="#2c2a1e" stroke-width="1.8" opacity="0.4"/>
-        <line x1="320" y1="62"  x2="160" y2="240" stroke="#2c2a1e" stroke-width="1.5" opacity="0.3"/>
-        <line x1="320" y1="62"  x2="480" y2="240" stroke="#2c2a1e" stroke-width="1.5" opacity="0.3"/>
-
-        <!-- Lead circle motif at crown -->
-        <circle cx="320" cy="62" r="20" stroke="#2c2a1e" stroke-width="2.5" fill="url(#amberPanel)" opacity="0.8"/>
-        <circle cx="320" cy="62" r="8"  fill="#d4b06a" opacity="0.6"/>
-
-        <!-- Column lead lines (sides) -->
-        <line x1="200" y1="260" x2="200" y2="560" stroke="#2c2a1e" stroke-width="2"   opacity="0.4"/>
-        <line x1="440" y1="260" x2="440" y2="560" stroke="#2c2a1e" stroke-width="2"   opacity="0.4"/>
-
-        <!-- Horizontal mid-panel dividers -->
-        <line x1="80"  y1="480" x2="220" y2="480" stroke="#2c2a1e" stroke-width="1.5" opacity="0.35"/>
-        <line x1="420" y1="480" x2="560" y2="480" stroke="#2c2a1e" stroke-width="1.5" opacity="0.35"/>
-
-        <!-- Art Nouveau ornamental flourishes at base of arch -->
-        <!-- Left scroll -->
-        <path d="M 80 400 Q 105 390 120 410 Q 135 430 115 445 Q 95 460 80 445 Q 65 430 80 400 Z"
-              stroke="#4a4535" stroke-width="1.5" fill="url(#sagePanel)" opacity="0.55"/>
-        <!-- Right scroll -->
-        <path d="M 560 400 Q 535 390 520 410 Q 505 430 525 445 Q 545 460 560 445 Q 575 430 560 400 Z"
-              stroke="#4a4535" stroke-width="1.5" fill="url(#pinkPanel)" opacity="0.55"/>
-
-        <!-- Golden filament highlights (glass shimmer) -->
-        <path d="M 130 240 Q 200 180 250 200"
-              stroke="rgba(212,176,106,0.4)" stroke-width="1" fill="none"/>
-        <path d="M 510 240 Q 440 180 390 200"
-              stroke="rgba(212,176,106,0.4)" stroke-width="1" fill="none"/>
-
-        <!-- Outer border ornamental frame -->
-        <rect x="12" y="12" width="616" height="796" rx="2"
-              stroke="#b8914a" stroke-width="1.5" fill="none" opacity="0.4"/>
-        <rect x="20" y="20" width="600" height="780" rx="2"
-              stroke="#b8914a" stroke-width="0.8" fill="none" opacity="0.25"/>
-
-        <!-- Corner ornament diamonds -->
-        <polygon points="12,12 28,12 12,28"   fill="#b8914a" opacity="0.5"/>
-        <polygon points="628,12 612,12 628,28" fill="#b8914a" opacity="0.5"/>
-        <polygon points="12,808 28,808 12,792" fill="#b8914a" opacity="0.5"/>
-        <polygon points="628,808 612,808 628,792" fill="#b8914a" opacity="0.5"/>
-
-        <!-- Subtle glass reflections -->
-        <path d="M 100 150 Q 130 120 160 140 Q 140 170 110 165 Z"
-              fill="white" opacity="0.08"/>
-        <path d="M 460 160 Q 490 130 520 155 Q 500 180 470 172 Z"
-              fill="white" opacity="0.07"/>
-        <path d="M 295 75 Q 320 65 345 75 Q 330 95 310 90 Z"
-              fill="white" opacity="0.15"/>
-
-      </svg>
-
-      <!-- Text overlay inside arch -->
       <div class="arch-text-overlay">
         <p class="arch-eyebrow"></p>
         <div class="arch-names">
-          Collin Pham
+          Collin 
+          Pham
           <span class="arch-ampersand">&amp;</span>
           Gabriela Pastor
         </div>
@@ -1007,7 +583,6 @@ nav a:hover { color: var(--gold); opacity: 1; }
       </div>
     </div>
 
-    <!-- Sub-copy below arch -->
     <div class="hero-sub">
       <p>Join us for a cocktail hour celebration<br>of our marriage.</p>
     </div>
@@ -1036,19 +611,16 @@ nav a:hover { color: var(--gold); opacity: 1; }
   </div>
 </section>
 
-<!-- Divider -->
 <div class="shimmer-line"></div>
 <div class="lead-divider"></div>
 
-<!-- ═══════════════════════════════ DRESS CODE ═══════════════════════════════ -->
 <section id="dress-code">
-  <div class="glass-panel-bg"></div>
   <div class="section-inner reveal">
     <p class="section-eyebrow">Attire</p>
     <h2 class="section-title">Dress Code</h2>
     <div class="nouveau-ornament"><div class="nouveau-diamond"></div></div>
     <p class="section-body">
-      We invite you to dress in the spirit of the evening —<br>
+      We invite you to dress in the spirit of the summer evening<br>
       luminous, graceful, and elegant.
     </p>
     <div class="dress-code-badge">Formal Attire &nbsp;·&nbsp; All White</div>
@@ -1061,7 +633,6 @@ nav a:hover { color: var(--gold); opacity: 1; }
 
 <div class="lead-divider"></div>
 
-<!-- ═══════════════════════════════ REGISTRY ═══════════════════════════════ -->
 <section id="registry">
   <div class="section-inner reveal">
     <p class="section-eyebrow">Gifts</p>
@@ -1079,7 +650,6 @@ nav a:hover { color: var(--gold); opacity: 1; }
 
 <div class="lead-divider"></div>
 
-<!-- ═══════════════════════════════ GALLERY ═══════════════════════════════ -->
 <section id="gallery">
   <div class="section-inner reveal">
     <p class="section-eyebrow">Moments</p>
@@ -1089,63 +659,43 @@ nav a:hover { color: var(--gold); opacity: 1; }
 
   <div style="max-width:860px; margin:0 auto; padding:0 2rem 5rem;">
     <div class="gallery-grid reveal">
+
       <div class="gallery-item">
         <div class="gallery-placeholder">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" opacity="0.4">
-            <rect x="2" y="5" width="28" height="22" rx="2" stroke="#7a7260" stroke-width="1.5"/>
-            <circle cx="11" cy="13" r="3" stroke="#7a7260" stroke-width="1.2"/>
-            <path d="M 2 22 l 8-7 5 5 5-6 10 9" stroke="#7a7260" stroke-width="1.2" fill="none"/>
-          </svg>
           <span>Your photo here</span>
         </div>
       </div>
+
       <div class="gallery-item">
-        <div class="gallery-placeholder" style="background: linear-gradient(135deg, rgba(157,196,197,0.4), rgba(107,159,160,0.3));">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" opacity="0.4">
-            <rect x="2" y="5" width="28" height="22" rx="2" stroke="#7a7260" stroke-width="1.5"/>
-            <circle cx="11" cy="13" r="3" stroke="#7a7260" stroke-width="1.2"/>
-            <path d="M 2 22 l 8-7 5 5 5-6 10 9" stroke="#7a7260" stroke-width="1.2" fill="none"/>
-          </svg>
+        <div class="gallery-placeholder">
           <span>Your photo here</span>
         </div>
       </div>
+
       <div class="gallery-item">
-        <div class="gallery-placeholder" style="background: linear-gradient(135deg, rgba(219,191,181,0.45), rgba(196,159,160,0.35));">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" opacity="0.4">
-            <rect x="2" y="5" width="28" height="22" rx="2" stroke="#7a7260" stroke-width="1.5"/>
-            <circle cx="11" cy="13" r="3" stroke="#7a7260" stroke-width="1.2"/>
-            <path d="M 2 22 l 8-7 5 5 5-6 10 9" stroke="#7a7260" stroke-width="1.2" fill="none"/>
-          </svg>
+        <div class="gallery-placeholder">
           <span>Your photo here</span>
         </div>
       </div>
+
       <div class="gallery-item">
-        <div class="gallery-placeholder" style="background: linear-gradient(135deg, rgba(242,224,186,0.5), rgba(212,176,106,0.35));">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" opacity="0.4">
-            <rect x="2" y="5" width="28" height="22" rx="2" stroke="#7a7260" stroke-width="1.5"/>
-            <circle cx="11" cy="13" r="3" stroke="#7a7260" stroke-width="1.2"/>
-            <path d="M 2 22 l 8-7 5 5 5-6 10 9" stroke="#7a7260" stroke-width="1.2" fill="none"/>
-          </svg>
+        <div class="gallery-placeholder">
           <span>Your photo here</span>
         </div>
       </div>
+
       <div class="gallery-item">
-        <div class="gallery-placeholder" style="background: linear-gradient(135deg, rgba(168,196,173,0.4), rgba(122,155,135,0.3));">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" opacity="0.4">
-            <rect x="2" y="5" width="28" height="22" rx="2" stroke="#7a7260" stroke-width="1.5"/>
-            <circle cx="11" cy="13" r="3" stroke="#7a7260" stroke-width="1.2"/>
-            <path d="M 2 22 l 8-7 5 5 5-6 10 9" stroke="#7a7260" stroke-width="1.2" fill="none"/>
-          </svg>
+        <div class="gallery-placeholder">
           <span>Your photo here</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <div class="lead-divider"></div>
 
-<!-- ═══════════════════════════════ RSVP ═══════════════════════════════ -->
 <section id="rsvp">
   <div class="section-inner reveal">
     <p class="section-eyebrow">Kindly Reply</p>
@@ -1157,150 +707,50 @@ nav a:hover { color: var(--gold); opacity: 1; }
     </p>
 
     <div class="rsvp-frame">
-      <div class="corner-bl"></div>
-      <div class="corner-br"></div>
-
-      <!-- Using Formspree for actual email delivery -->
       <form class="rsvp-form" id="rsvpForm">
         <div class="form-group">
           <label for="rsvp-name">Full Name</label>
-          <input type="text" id="rsvp-name" name="name" placeholder="Your full name" required autocomplete="name"/>
+          <input type="text" id="rsvp-name" name="name" placeholder="Your full name" required>
         </div>
+
         <div class="form-group">
           <label for="rsvp-email">Email Address</label>
-          <input type="email" id="rsvp-email" name="email" placeholder="your@email.com" required autocomplete="email"/>
+          <input type="email" id="rsvp-email" name="email" placeholder="your@email.com" required>
         </div>
-        <div class="form-group">
-          <label for="rsvp-guests">Number of Guests</label>
-          <select id="rsvp-guests" name="guests" required>
-            <option value="" disabled selected>Select number of guests</option>
-            <option value="1">1 — Just me</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5+">5 or more</option>
-          </select>
-        </div>
+
+        
+         
+
         <div class="form-group">
           <label for="rsvp-message">Message (optional)</label>
           <textarea id="rsvp-message" name="message" placeholder="A note for the couple…"></textarea>
         </div>
-        <button type="submit" class="rsvp-submit"><span>Confirm Attendance</span></button>
+
+        <button type="submit" class="rsvp-submit">Confirm Attendance</button>
         <div class="form-status" id="formStatus"></div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <div class="lead-divider" style="background: var(--lead-mid);"></div>
+
 <footer>
   <p class="footer-names">Collin Pham &nbsp;·&nbsp; Gabriela Pastor</p>
   <p class="footer-date">August 1 &nbsp;·&nbsp; With love</p>
 </footer>
 
-<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
 <script>
-/* ─── PARTICLES ─── */
 (function(){
-  const canvas = document.getElementById('particle-canvas');
-  const ctx    = canvas.getContext('2d');
-  let W, H, particles;
-
-  const COLORS = [
-    'rgba(184,145,74,',
-    'rgba(107,159,160,',
-    'rgba(196,159,160,',
-    'rgba(168,196,173,',
-    'rgba(212,224,186,',
-  ];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function init(){
-    resize();
-    particles = Array.from({length: 55}, () => makeParticle());
-    window.addEventListener('resize', resize);
-  }
-
-  function makeParticle(fromBottom){
-    return {
-      x:     Math.random() * (W || window.innerWidth),
-      y:     fromBottom ? (H || window.innerHeight) + 10 : Math.random() * (H || window.innerHeight),
-      r:     Math.random() * 2.2 + 0.4,
-      vx:    (Math.random() - 0.5) * 0.18,
-      vy:    -(Math.random() * 0.35 + 0.08),
-      alpha: Math.random() * 0.45 + 0.08,
-      pulse: Math.random() * Math.PI * 2,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-    };
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      p.pulse += 0.018;
-      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + a + ')';
-      ctx.fill();
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if(p.y < -10) Object.assign(p, makeParticle(true));
-    });
-    requestAnimationFrame(draw);
-  }
-
-  init();
-  draw();
-})();
-
-/* ─── SCROLL REVEAL ─── */
-(function(){
-  const els = document.querySelectorAll('.reveal');
-  if(!els.length) return;
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  els.forEach(el => io.observe(el));
-})();
-
-/* ─── PARALLAX HERO ─── */
-(function(){
-  const arch = document.querySelector('.arch-wrapper');
-  if(!arch) return;
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    arch.style.transform = `translateY(${scrolled * 0.12}px)`;
-  }, { passive: true });
-})();
-
-/* ─── RSVP FORM via Formspree ─── */
-(function(){
-  const form   = document.getElementById('rsvpForm');
+  const form = document.getElementById('rsvpForm');
   const status = document.getElementById('formStatus');
-  if(!form) return;
 
-  form.addEventListener('submit', async e => {
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = form.querySelector('.rsvp-submit');
-    btn.disabled = true;
-    btn.querySelector('span').textContent = 'Sending…';
 
     const data = new FormData(form);
-    // Formspree endpoint — https://formspree.io/f/meewzkjz with actual ID after signing up at formspree.io
-    // The email controlgabyy@gmail.com should be set as the recipient in your Formspree dashboard
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meewzkjz';
 
     try {
@@ -1310,33 +760,20 @@ nav a:hover { color: var(--gold); opacity: 1; }
         headers: { 'Accept': 'application/json' }
       });
 
-      if(res.ok){
+      if (res.ok) {
         status.textContent = 'Thank you — we look forward to celebrating with you.';
-        status.style.color = 'var(--sage-dark)';
         status.classList.add('visible');
         form.reset();
-        btn.querySelector('span').textContent = 'Sent ✦';
       } else {
-        throw new Error('Network response was not ok');
+        throw new Error();
       }
-    } catch(err){
-      // Fallback: open mail client if Formspree isn't configured yet
-      status.innerHTML = 'Please <a href="mailto:controlgabyy@gmail.com?subject=RSVP: ' +
-        encodeURIComponent((document.getElementById('rsvp-name').value || 'Guest')) +
-        '&body=' + encodeURIComponent(
-          'Name: ' + (document.getElementById('rsvp-name').value || '') + '\n' +
-          'Email: ' + (document.getElementById('rsvp-email').value || '') + '\n' +
-          'Guests: ' + (document.getElementById('rsvp-guests').value || '') + '\n' +
-          'Message: ' + (document.getElementById('rsvp-message').value || '')
-        ) +
-        '" style="color:var(--gold)">send your RSVP via email</a> — we look forward to hearing from you.';
-      status.style.color = 'var(--lead-mid)';
+    } catch {
+      status.textContent = 'There was an issue sending your RSVP. Please try again.';
       status.classList.add('visible');
-      btn.querySelector('span').textContent = 'Confirm Attendance';
-      btn.disabled = false;
     }
   });
 })();
 </script>
+
 </body>
 </html>
