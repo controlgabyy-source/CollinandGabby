@@ -361,47 +361,6 @@ section {
   padding: 0.7em 2em;
 }
 
-#gallery {
-  background: var(--cream);
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 2.5rem;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 3 / 4;
-}
-
-.gallery-item:first-child {
-  grid-row: span 2;
-  aspect-ratio: unset;
-}
-
-.gallery-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-  background: linear-gradient(135deg, rgba(168,196,173,0.4), rgba(219,191,181,0.4), rgba(242,224,186,0.3));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--lead-light);
-  gap: 0.5rem;
-}
-
-.gallery-placeholder span {
-  font-style: italic;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-}
-
 #rsvp {
   background: linear-gradient(180deg, var(--cream), var(--ivory));
 }
@@ -560,8 +519,7 @@ footer .footer-date {
 <nav>
   <a href="#hero">Home</a>
   <a href="#dress-code">Attire</a>
-  <a href="#registry">Registry</a>
-  <a href="#gallery">Gallery</a>
+  <a href="#gifts">Gifts</a>
   <a href="#rsvp">RSVP</a>
 </nav>
 
@@ -632,64 +590,14 @@ footer .footer-date {
 
 <div class="lead-divider"></div>
 
-<section id="registry">
+<section id="gifts">
   <div class="section-inner reveal">
     <p class="section-eyebrow">Gifts</p>
-    <h2 class="section-title">Registry</h2>
+    <h2 class="section-title">Gifts</h2>
     <div class="nouveau-ornament"><div class="nouveau-diamond"></div></div>
     <p class="section-body">
-      Your presence is the greatest gift.<br>
-      For those who wish to celebrate with a gift,<br>our registry can be found below.
+      In lieu of a traditional registry, we kindly request monetary gifts to help us begin our next chapter together. Your presence at our celebration is more than enough, and any contribution is greatly appreciated.
     </p>
-    <a class="registry-link" href="#" target="_blank" rel="noopener">
-      View Our Registry
-    </a>
-  </div>
-</section>
-
-<div class="lead-divider"></div>
-
-<section id="gallery">
-  <div class="section-inner reveal">
-    <p class="section-eyebrow">Moments</p>
-    <h2 class="section-title">Gallery</h2>
-    <div class="nouveau-ornament"><div class="nouveau-diamond"></div></div>
-  </div>
-
-  <div style="max-width:860px; margin:0 auto; padding:0 2rem 5rem;">
-    <div class="gallery-grid reveal">
-
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Your photo here</span>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Your photo here</span>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Your photo here</span>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Your photo here</span>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Your photo here</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
